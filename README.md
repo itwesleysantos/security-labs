@@ -2,4 +2,4 @@
 
 ## Sections
 
-- [Gobuster](./gobuster)
+- [Gobuster](./gobuster.md)
