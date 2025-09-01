@@ -1,36 +1,51 @@
-# Gobuster
+# Gobuster Lab
 
 ## Concept
-The Gobuster application is a command-line application, meaning it lacks a graphical user interface. <br>
-It is also a brute force tool, that is, a tool whose method is to try all possible combinations until finding the correct one.
+Gobuster is a command-line brute-force tool. It tries all possible combinations to find directories/files on a target URL.
 
 ## Execution
-With the terminal open, type gobuster -u http://example1234.com -w wordlist.txt dir <br>
-The -u defines the target URL to be tested (http://example1234.com). <br>
-The -w defines the wordlist with the names that Gobuster will use to try to find directories/files (wordlist.txt).
+Open a terminal and run:
 
-## How it happens
-In other words, it will take each word from the wordlist.txt file and append it to the URL http://example1234.com/ to see if it exists.
+```bash
+gobuster -u http://example1234.com -w wordlist.txt dir
+```
+- -u → specifies the target URL
+- -w → specifies the wordlist to use
 
-If wordlist.txt contains, for example: <br>
-admin <br>
-login <br>
-images <br>
-secret
+## Example wordlist:
+- admin
+- login
+- images
+- secret
 
-Gobuster will assemble and test these URLs: <br>
-http://example1234.com/admin <br>
-http://example1234.com/login <br>
-http://example1234.com/images <br>
-http://example1234.com/secret
+## Gobuster tests:
+- http://example1234.com/admin 
+- http://example1234.com/login
+- http://example1234.com/images
+- http://example1234.com/secret
 <br>
-<br>
-For each request, it checks the HTTP status:
-- 200 (OK) → Resource exists and was loaded successfully.
-- 204 (No Content) → Resource exists, but has no response body (an "empty" page).
-- 301 (Moved Permanently) → Permanently redirects to another URL.
-- 302 (Found / Temporary Redirect) → Temporarily redirects.
-- 307 (Temporary Redirect, strict) → Temporarily redirects, but maintains the HTTP method (e.g., POST remains POST).
-- 403 (Forbidden) → The resource exists, but you don't have permission to access it.
 
-In the end, you have a list of only the paths that actually exist on the target.
+> [!NOTE]   
+For each word in the wordlist, Gobuster appends it to the target URL and sends a request.
+It then checks the HTTP status code to determine if the resource exists or how it responds.
+<br>
+
+## HTTP Status Codes
+- 200 (OK) → Resource exists and was loaded successfully
+- 204 (No Content) → Resource exists but has no response body
+- 301 (Moved Permanently) → Permanently redirects to another URL
+- 302 (Found / Temporary Redirect) → Temporarily redirects
+- 307 (Temporary Redirect, strict) → Maintains HTTP method (e.g., POST remains POST)
+- 403 (Forbidden) → Resource exists but access is denied
+
+## Output
+
+The final output shows only the paths that exist on the target server.
+This allows you to identify valid directories or files without manually checking each one.
+
+<br>
+
+> [!TIP]
+> - Use a curated wordlist to improve speed and accuracy.  
+> - Combine with other reconnaissance tools for comprehensive testing.  
+> - Always have permission to test the target URL to avoid legal issues.
