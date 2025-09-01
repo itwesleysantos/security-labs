@@ -9,8 +9,8 @@ Open a terminal and run:
 ```bash
 gobuster -u http://example1234.com -w wordlist.txt dir
 ```
-- -u → specifies the target URL
-- -w → specifies the wordlist to use
+- **-u** → specifies the target URL  
+- **-w** → specifies the wordlist to use 
 
 ## Example wordlist:
 - admin
@@ -31,18 +31,19 @@ It then checks the HTTP status code to determine if the resource exists or how i
 <br>
 
 ## HTTP Status Codes
-- 200 (OK) → Resource exists and was loaded successfully
-- 204 (No Content) → Resource exists but has no response body
-- 301 (Moved Permanently) → Permanently redirects to another URL
-- 302 (Found / Temporary Redirect) → Temporarily redirects
-- 307 (Temporary Redirect, strict) → Maintains HTTP method (e.g., POST remains POST)
-- 403 (Forbidden) → Resource exists but access is denied
+| Code | Meaning |
+|------|---------|
+| 200  | OK – Resource exists and was loaded successfully |
+| 204  | No Content – Resource exists but has no response body |
+| 301  | Moved Permanently – Permanently redirects to another URL |
+| 302  | Found / Temporary Redirect – Temporarily redirects |
+| 307  | Temporary Redirect (strict) – Maintains HTTP method (e.g., POST remains POST) |
+| 403  | Forbidden – Resource exists but access is denied |
 
 ## Output
 
 The final output shows only the paths that exist on the target server.
-This allows you to identify valid directories or files without manually checking each one.
-
+This allows you to identify valid directories or files without manually checking each one.  
 <br>
 
 > [!TIP]
